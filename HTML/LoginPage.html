@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendify</title>
+    <title>Attendify-Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -118,21 +118,6 @@
             <h1 class="text-3xl font-bold text-center text-gray-900 mb-6">
                 Attendify
             </h1>
-
-            <div id="login-form">
-                <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Welcome Back</h2>
-                <input type="email" id="email" placeholder="Email Address" class="input-field">
-                <input type="password" id="password" placeholder="Password" class="input-field">
-                <button id="email-signin-btn" class="btn btn-primary mb-4">Sign In</button>
-            </div>
-
-            <div id="signup-form" style="display: none;">
-                <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Create an Account</h2>
-                <input type="email" id="signup-email" placeholder="Email Address" class="input-field">
-                <input type="password" id="signup-password" placeholder="Password" class="input-field">
-                <button id="email-signup-btn" class="btn btn-primary mb-4">Sign Up</button>
-            </div>
-
             <div id="role-selection" style="display: none;">
                 <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Choose Your Role</h2>
                 <div class="mb-4">
@@ -148,6 +133,22 @@
                 </div>
                 <button id="complete-registration-btn" class="btn btn-primary">Complete Registration</button>
             </div>
+
+            <div id="login-form">
+                <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Welcome </h2>
+                <input type="email" id="email" placeholder="Email Address" class="input-field">
+                <input type="password" id="password" placeholder="Password" class="input-field">
+                <button id="email-signin-btn" class="btn btn-primary mb-4">Sign In</button>
+            </div>/
+
+            <div id="signup-form" style="display: none;">
+                <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Create an Account</h2>
+                <input type="email" id="signup-email" placeholder="Email Address" class="input-field">
+                <input type="password" id="signup-password" placeholder="Password" class="input-field">
+                <button id="email-signup-btn" class="btn btn-primary mb-4">Sign Up</button>
+            </div>
+
+
 
             <div id="auth-status" style="display: none;">
                 <h2 class="text-xl font-semibold text-center mb-4 text-gray-800">Welcome!</h2>

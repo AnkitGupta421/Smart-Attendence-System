@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        /* Container for the buttons */
+        #buttonContainer {
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            color: #333;
+        }
+
+        /* Styling for all buttons */
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 8px;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            /* Slight lift on hover */
+        }
+
+        /* Specific colors for buttons */
+        .primary-btn {
+            background-color: #a87c7a;
+            /* Blue */
+        }
+
+        .primary-btn:hover {
+            background-color: #503f29f7;
+        }
+
+        .secondary-btn {
+            background-color: #a87c7a;
+            /* Gray */
+            #6
+        }
+
+        .secondary-btn:hover {
+            background-color: #503f29f7;
+        }
+
+        .university-option-btn {
+            background-color: #28a745;
+            /* Green */
+        }
+
+        .university-option-btn:hover {
+            background-color: #218838;
+        }
+
+
+        /* Class to hide elements */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="buttonContainer">
+        <div id="initialSelection">
+            <h1>Please select an option</h1>
+            <button id="universityBtn" class="btn primary-btn">University 🎓</button>
+            <button class="btn secondary-btn">Corporate 🏢</button>
+        </div>
+
+        <div id="universityOptions" class="hidden">
+            <h1>Are you a...</h1>
+            <button class="btn university-option-btn">Student 🧑‍🎓</button>
+            <button class="btn university-option-btn">Faculty 👩‍🏫</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the button and the containers
+        const universityBtn = document.getElementById('universityBtn');
+        const initialSelection = document.getElementById('initialSelection');
+        const universityOptions = document.getElementById('universityOptions');
+
+        // Add ann event listener to the Uiversity button
+        universityBtn.addEventListener('click', function () {
+            // Hide the initial set of buttons
+            initialSelection.classList.add('hidden');
+
+            // Show the university-specific buttons
+            universityOptions.classList.remove('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
