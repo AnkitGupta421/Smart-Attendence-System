@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendify - AWS Cognito Login</title>
+    <!-- Keep your existing CSS -->
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Attendify Login</h1>
+            <button id="google-login-btn" class="btn btn-google">
+                Sign in with Google
+            </button>
+            <div id="user-info" style="display: none;">
+                <h2>Welcome!</h2>
+                <p>Email: <span id="user-email"></span></p>
+                <button id="logout-btn" class="btn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TODO: Replace these with your actual values from AWS Cognito
+        const COGNITO_DOMAIN = 'https://ap-south-1gdypzg5zm.auth.ap-south-1.amazoncognito.com';
+        const CLIENT_ID = '6q2v093o4igcsnc6khak9bc2vq';
+        const REDIRECT_URI = 'http://localhost:8000/callback';
+        
+        // Elements
+        const googleLoginBtn = document.getElementById('google-login-btn');
+        const userInfo = document.getElementById('user-info');
+        const userEmail = document.getElementById('user-email');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // Build Google login URL
+        function buildGoogleLoginUrl() {
+            const params = new URLSearchParams({
+                'response_type': 'code',
+                'client_id': CLIENT_ID,
+                'redirect_uri': REDIRECT_URI,
+                'scope': 'openid email profile',
+                'identity_provider': 'Google'
+            });
+            
+            return `${COGNITO_DOMAIN}/oauth2/authorize?${params.toString()}`;
+        }
+
+        // Handle login button click
+        googleLoginBtn.addEventListener('click', () => {
+            window.location.href = buildGoogleLoginUrl();
+        });
+
+        // Check if user is coming back from login
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            // User logged in successfully
+            // You can exchange the code for tokens here
+            // For now, just show success
+            googleLoginBtn.style.display = 'none';
+            userInfo.style.display = 'block';
+            userEmail.textContent = 'Login successful!';
+            
+            // Redirect to your main app
+            setTimeout(() => {
+                window.location.href = 'Selection.html';
+            }, 2000);
+        }
+
+        // Handle logout
+        logoutBtn.addEventListener('click', () => {
+            window.location.href = `${COGNITO_DOMAIN}/logout?client_id=${CLIENT_ID}&logout_uri=${REDIRECT_URI}`;
+        });
+    </script>
+</body>
+</html>
