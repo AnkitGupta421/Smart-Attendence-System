@@ -34,21 +34,7 @@
             background-color: #f3eefc;
         }
 
-        /* Style for the video feed */
-        #video {
-            border-radius: 0.5rem;
-            border: 1px solid #d1d5db;
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Style for the captured image placeholder */
-        #captured-image {
-            border-radius: 0.5rem;
-            border: 1px solid #d1d5db;
-        }
-
-        /* Custom style for displaying info - RESOLVED ERROR */
+        /* Custom style for displaying info */
         .info-label {
             display: block;
             font-size: 0.875rem;
@@ -99,9 +85,13 @@
                         </svg>
                         <span class="text-gray-700 font-medium">24BSA10200</span>
                     </div>
-                    <button id="logout-btn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    <button id="logout-btn"
+                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                            </path>
                         </svg>
                         Logout
                     </button>
@@ -183,10 +173,6 @@
                     <a href="#" id="attendanceTab"
                         class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
                         Attendance
-                    </a>
-                    <a href="#" id="imageUploadTab"
-                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        Image Upload
                     </a>
                 </nav>
             </div>
@@ -274,7 +260,6 @@
                 </div>
             </div>
 
-
             <div id="attendanceContent" class="p-6 hidden">
                 <div id="semester-view">
                     <h2 class="text-lg font-semibold text-gray-900">Attendance Details</h2>
@@ -348,140 +333,73 @@
                 </div>
             </div>
 
-            <div id="imageUploadContent" class="p-6 hidden">
-                <div class="flex items-start mb-6">
-                    <div class="bg-gray-100 p-3 rounded-full">
-                        <i class="fas fa-camera-retro w-6 h-6 text-gray-600"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h2 class="text-lg font-semibold text-gray-900">Upload Your Face by Camera</h2>
-                        <p class="text-gray-500">Use your camera to take a profile photo for attendance verification.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-r-lg">
-                    <h3 class="font-bold text-blue-800">Please follow these instructions:</h3>
-                    <ul class="mt-2 list-disc list-inside text-blue-700 space-y-1">
-                        <li>Photo should be taken without spectacles or hats.</li>
-                        <li>Ensure no other person is visible in the background.</li>
-                        <li>Your face should be clearly visible with appropriate lighting.</li>
-                        <li>You can only upload your photo in one chance.</li>
-                    </ul>
-                </div>
-
-                <div id="upload-container" class="mt-6 space-y-4">
-                    <div id="photo-buttons"
-                        class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
-                        <button id="start-camera" type="button"
-                            class="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            <i class="fas fa-camera mr-2"></i> Start Camera
-                        </button>
-                        <button id="take-photo" type="button" disabled
-                            class="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed">
-                            <i class="fas fa-crosshairs mr-2"></i> Take Photo
-                        </button>
-                    </div>
-
-                    <p id="camera-status" class="text-sm text-red-600"></p>
-
-                    <div id="photo-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                        <div id="live-feed-container">
-                            <h3 class="font-medium text-gray-700 mb-2">Live Camera Feed</h3>
-                            <video id="video" autoplay class="bg-gray-200"></video>
-                        </div>
-                        <div>
-                            <h3 class="font-medium text-gray-700 mb-2">Captured Photo</h3>
-                            <canvas id="canvas" class="hidden"></canvas>
-                            <img id="captured-image" src="https://placehold.co/600x400/e2e8f0/4a5568?text=Your+Photo"
-                                alt="Your captured photo will appear here." class="w-full h-auto">
-                        </div>
-                    </div>
-                </div>
-                <div id="success-message"
-                    class="hidden mt-6 text-center p-6 bg-green-50 border border-green-200 rounded-lg">
-                    <i class="fas fa-check-circle text-4xl text-green-500 mb-3"></i>
-                    <h3 class="text-lg font-semibold text-green-800">Photo Uploaded Successfully!</h3>
-                    <p class="text-green-600 mt-1">You can no longer change your profile photo.</p>
-                </div>
-            </div>
-
         </div>
     </main>
     <script>
-        // --- AWS Cognito Configuration & Logout Functionality Added Here ---
+        // --- AWS Cognito Configuration & Logout Functionality ---
         const COGNITO_DOMAIN = 'https://ap-south-1gdypzg5zm.auth.ap-south-1.amazoncognito.com';
         const CLIENT_ID = '6q2v093o4igcsnc6khak9bc2vq';
         const LOGOUT_URI = 'http://localhost:8000/loginpage1.html';
-        
+
         function performLogout() {
             try {
                 localStorage.clear();
                 sessionStorage.clear();
-                
-                document.cookie.split(";").forEach(function(c) { 
-                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
                 });
-                
+
                 const logoutUrl = `${COGNITO_DOMAIN}/logout?client_id=${CLIENT_ID}&logout_uri=${encodeURIComponent(LOGOUT_URI)}`;
                 window.location.href = logoutUrl;
-                
+
             } catch (error) {
                 console.error('Logout error:', error);
                 window.location.href = LOGOUT_URI;
             }
         }
-        
-        document.getElementById('logout-btn').addEventListener('click', function(e) {
+
+        document.getElementById('logout-btn').addEventListener('click', function (e) {
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 performLogout();
             }
         });
 
-
         // --- Tab Switching Logic ---
         const studentInfoTab = document.getElementById('studentInfoTab');
         const attendanceTab = document.getElementById('attendanceTab');
-        const imageUploadTab = document.getElementById('imageUploadTab');
 
         const studentInfoContent = document.getElementById('studentInfoContent');
         const attendanceContent = document.getElementById('attendanceContent');
-        const imageUploadContent = document.getElementById('imageUploadContent');
 
-        function switchTab(activeTab, inactiveTab1, inactiveTab2, activeContent, inactiveContent1, inactiveContent2) {
-            activeTab.classList.add('border-indigo-500', 'text-indigo-600');
-            activeTab.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-
-            [inactiveTab1, inactiveTab2].forEach(tab => {
+        function setActiveTab(activeTab) {
+            // Reset both tabs to inactive state
+            [studentInfoTab, attendanceTab].forEach(tab => {
                 tab.classList.remove('border-indigo-500', 'text-indigo-600');
                 tab.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
             });
 
-            activeContent.classList.remove('hidden');
-            inactiveContent1.classList.add('hidden');
-            inactiveContent2.classList.add('hidden');
-
-            // By default show semester view when switching to attendance tab
-            if (activeTab === attendanceTab) {
-                document.getElementById('semester-view').classList.remove('hidden');
-                document.getElementById('subject-detail-view').classList.add('hidden');
-            }
+            // Apply active styles to the clicked tab
+            activeTab.classList.add('border-indigo-500', 'text-indigo-600');
+            activeTab.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
         }
 
         studentInfoTab.addEventListener('click', (e) => {
             e.preventDefault();
-            switchTab(studentInfoTab, attendanceTab, imageUploadTab, studentInfoContent, attendanceContent, imageUploadContent);
+            setActiveTab(studentInfoTab);
+            studentInfoContent.classList.remove('hidden');
+            attendanceContent.classList.add('hidden');
         });
 
         attendanceTab.addEventListener('click', (e) => {
             e.preventDefault();
-            switchTab(attendanceTab, studentInfoTab, imageUploadTab, attendanceContent, studentInfoContent, imageUploadContent);
-        });
-
-        imageUploadTab.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchTab(imageUploadTab, studentInfoTab, attendanceTab, imageUploadContent, studentInfoContent, attendanceContent);
+            setActiveTab(attendanceTab);
+            attendanceContent.classList.remove('hidden');
+            studentInfoContent.classList.add('hidden');
+            // By default show semester view when switching to attendance tab
+            document.getElementById('semester-view').classList.remove('hidden');
+            document.getElementById('subject-detail-view').classList.add('hidden');
         });
 
         // --- Attendance Section Logic ---
@@ -491,7 +409,6 @@
         const semesterView = document.getElementById('semester-view');
         const subjectDetailView = document.getElementById('subject-detail-view');
         const backToSubjectsBtn = document.getElementById('back-to-subjects');
-
 
         // Mock data for subjects and their attendance
         const subjectsBySemester = {
@@ -595,74 +512,6 @@
             e.preventDefault();
             subjectDetailView.classList.add('hidden');
             semesterView.classList.remove('hidden');
-        });
-
-
-        // --- Image Upload by Camera Logic ---
-        const startCameraButton = document.getElementById('start-camera');
-        const takePhotoButton = document.getElementById('take-photo');
-        const videoElement = document.getElementById('video');
-        const canvasElement = document.getElementById('canvas');
-        const capturedImageElement = document.getElementById('captured-image');
-        const cameraStatusElement = document.getElementById('camera-status');
-        const uploadContainer = document.getElementById('upload-container');
-        const successMessage = document.getElementById('success-message');
-        let stream = null;
-        let isPhotoUploaded = false; // State to track if photo has been taken
-
-        startCameraButton.addEventListener('click', async () => {
-            if (isPhotoUploaded) return; // Don't do anything if photo is already uploaded
-
-            cameraStatusElement.textContent = '';
-            // Stop any existing stream
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
-            }
-            try {
-                stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                videoElement.srcObject = stream;
-                takePhotoButton.disabled = false;
-                startCameraButton.textContent = 'Restart Camera';
-                // Set canvas dimensions once video metadata is loaded
-                videoElement.addEventListener('loadedmetadata', () => {
-                    canvasElement.width = videoElement.videoWidth;
-                    canvasElement.height = videoElement.videoHeight;
-                });
-            } catch (err) {
-                console.error("Error accessing camera: ", err);
-                cameraStatusElement.textContent = 'Error: Could not access the camera. Please check permissions.';
-                takePhotoButton.disabled = true;
-            }
-        });
-
-        takePhotoButton.addEventListener('click', () => {
-            if (stream && videoElement.readyState >= 2) { // Check if video has enough data
-                const context = canvasElement.getContext('2d');
-                context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-
-                const imageDataUrl = canvasElement.toDataURL('image/png');
-                capturedImageElement.src = imageDataUrl;
-
-                // Stop the camera stream after taking a photo
-                stream.getTracks().forEach(track => track.stop());
-                videoElement.srcObject = null;
-
-                // --- LOCK THE FEATURE & UPDATE UI ---
-                isPhotoUploaded = true;
-
-                // Hide the buttons and the live feed
-                document.getElementById('photo-buttons').classList.add('hidden');
-                document.getElementById('live-feed-container').classList.add('hidden');
-                cameraStatusElement.classList.add('hidden');
-
-                // Adjust grid to center the captured photo
-                const photoGrid = document.getElementById('photo-grid');
-                photoGrid.classList.remove('md:grid-cols-2');
-                photoGrid.classList.add('justify-center');
-
-                // Show the success message
-                successMessage.classList.remove('hidden');
-            }
         });
 
     </script>
