@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendify - Faculty Portal</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* A very light gray */
+            background-color: #f8fafc;
+            /* A very light gray */
         }
+
         /* Custom styles for video element to maintain aspect ratio */
         .camera-feed {
             width: 100%;
@@ -24,8 +24,10 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 0.5rem;
-            transform: scaleX(-1); /* Mirror effect */
+            transform: scaleX(-1);
+            /* Mirror effect */
         }
+
         /* Style for the captured image thumbnail */
         .log-thumbnail {
             width: 60px;
@@ -36,56 +38,55 @@
         }
     </style>
 </head>
+
 <body class="flex flex-col items-center min-h-screen">
 
-    <!-- Header -->
     <header class="w-full bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Left Side: Logo and Title -->
             <div class="flex items-center gap-4">
                 <h1 class="text-2xl font-bold text-slate-800">
                     <i class="fas fa-user-check text-blue-600"></i>
                     Attendify
                 </h1>
             </div>
-            
-            <!-- Right Side: Logout Button -->
-            <a href="#" id="logout-btn" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-700 transition-colors font-medium">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="hidden sm:inline">Logout</span>
-            </a>
         </div>
     </header>
 
     <main class="container mx-auto p-4 md:p-8 flex-grow w-full">
 
-        <!-- Centered Title -->
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-slate-700 tracking-tight">Faculty Portal</h2>
+            <h2 class="text-3xl font-bold text-slate-700 tracking-tight flex items-center justify-center gap-3">
+                <i class="fas fa-chalkboard-teacher text-blue-600"></i>
+                <span>Faculty Portal</span>
+            </h2>
         </div>
 
-        <!-- Step 1: Slot Selection -->
         <div id="slot-selection-section" class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg text-center">
             <i class="fas fa-clock text-4xl text-blue-500 mb-4"></i>
             <h2 class="text-2xl font-bold text-slate-800 mb-2">Select Class Slot</h2>
             <p class="text-slate-500 mb-6">Choose the class and time slot to begin taking attendance.</p>
             <div class="w-full mb-6">
-                <select id="class-slot-select" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                <select id="class-slot-select"
+                    class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                     <option value="">-- Select a Slot --</option>
-                    <option value="CS101 - Intro to Programming (9:00 AM - 10:00 AM)">CS101 - Intro to Programming (9:00 AM - 10:00 AM)</option>
-                    <option value="MA203 - Linear Algebra (10:30 AM - 11:30 AM)">MA203 - Linear Algebra (10:30 AM - 11:30 AM)</option>
-                    <option value="PHY110 - Classical Mechanics (1:00 PM - 2:00 PM)">PHY110 - Classical Mechanics (1:00 PM - 2:00 PM)</option>
-                    <option value="CHM321 - Organic Chemistry (2:30 PM - 3:30 PM)">CHM321 - Organic Chemistry (2:30 PM - 3:30 PM)</option>
+                    <option value="CS101 - Intro to Programming (9:00 AM - 10:00 AM)">CS101 - Intro to Programming (9:00
+                        AM - 10:00 AM)</option>
+                    <option value="MA203 - Linear Algebra (10:30 AM - 11:30 AM)">MA203 - Linear Algebra (10:30 AM -
+                        11:30 AM)</option>
+                    <option value="PHY110 - Classical Mechanics (1:00 PM - 2:00 PM)">PHY110 - Classical Mechanics (1:00
+                        PM - 2:00 PM)</option>
+                    <option value="CHM321 - Organic Chemistry (2:30 PM - 3:30 PM)">CHM321 - Organic Chemistry (2:30 PM -
+                        3:30 PM)</option>
                 </select>
                 <p id="slot-error" class="text-red-500 text-sm mt-2 hidden">Please select a valid class slot.</p>
             </div>
-            <button id="start-session-btn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <button id="start-session-btn"
+                class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <i class="fas fa-arrow-right mr-2"></i>
                 Proceed
             </button>
         </div>
 
-        <!-- Step 2: Attendance Taking Section (Initially Hidden) -->
         <div id="attendance-taking-section" class="hidden">
             <div class="text-center mb-6">
                 <h2 class="text-2xl font-bold text-slate-800">Attendance Taking</h2>
@@ -93,43 +94,54 @@
             </div>
 
             <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Left Side: Camera and Controls -->
                 <div class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
                     <h3 class="text-lg font-semibold text-slate-700 mb-4">Live Camera Feed</h3>
-                    <div class="w-full max-w-xl bg-slate-800 rounded-lg overflow-hidden relative flex items-center justify-center aspect-video">
+                    <div
+                        class="w-full max-w-xl bg-slate-800 rounded-lg overflow-hidden relative flex items-center justify-center aspect-video">
                         <video id="camera-feed" class="camera-feed" autoplay playsinline muted></video>
-                        <div id="camera-status" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
-                           <p>Camera is starting...</p>
+                        <div id="camera-status"
+                            class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
+                            <p>Camera is starting...</p>
                         </div>
                     </div>
                     <div class="mt-6 flex gap-4 w-full">
-                         <button id="capture-btn" disabled class="flex-grow bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                        <button id="capture-btn" disabled
+                            class="flex-grow bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                             <i class="fas fa-id-card"></i>
                             Capture Attendance
                         </button>
-                        <button id="end-session-btn" class="flex-grow bg-red-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-red-600 transition flex items-center justify-center gap-2">
-                           <i class="fas fa-stop-circle"></i>
+                        <button id="end-session-btn"
+                            class="flex-grow bg-red-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-red-600 transition flex items-center justify-center gap-2">
+                            <i class="fas fa-stop-circle"></i>
                             End Session
                         </button>
                     </div>
                 </div>
 
-                <!-- Right Side: Attendance Log -->
                 <div class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-slate-700 mb-4">Attendance Log</h3>
                     <div class="h-96 overflow-y-auto border rounded-lg">
                         <table class="min-w-full divide-y divide-slate-200">
                             <thead class="bg-slate-50 sticky top-0">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Photo</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Student ID</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Name</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Time</th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        Photo</th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        Student ID</th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        Name</th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        Time</th>
                                 </tr>
                             </thead>
                             <tbody id="attendance-log-body" class="bg-white divide-y divide-slate-200">
                                 <tr id="no-entries-row">
-                                    <td colspan="4" class="px-4 py-6 text-center text-slate-500">No students marked present yet.</td>
+                                    <td colspan="4" class="px-4 py-6 text-center text-slate-500">No students marked
+                                        present yet.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -138,7 +150,6 @@
             </div>
         </div>
 
-        <!-- Step 3: Session Summary (Initially Hidden) -->
         <div id="session-summary-section" class="hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
             <div class="text-center mb-6">
                 <i class="fas fa-clipboard-check text-4xl text-blue-500 mb-4"></i>
@@ -147,7 +158,6 @@
                 <p id="summary-date" class="text-sm text-slate-500"></p>
             </div>
 
-            <!-- Stats -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-center">
                 <div class="bg-green-100 p-6 rounded-lg">
                     <p class="text-4xl font-bold text-green-700" id="present-count">0</p>
@@ -159,28 +169,23 @@
                 </div>
             </div>
 
-            <!-- Student Lists -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Present Students</h3>
                     <ul id="present-students-list" class="space-y-2 max-h-60 overflow-y-auto pr-2">
-                        <!-- JS will populate this -->
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Absent Students</h3>
                     <ul id="absent-students-list" class="space-y-2 max-h-60 overflow-y-auto pr-2">
-                        <!-- JS will populate this -->
                     </ul>
                 </div>
             </div>
 
-            <div class="mt-8 text-center" id="summary-buttons">
-                <!-- JS will populate this -->
+            <div class="mt-8 text-center flex justify-center gap-4" id="summary-buttons">
             </div>
         </div>
 
-        <!-- Step 4: Attendance History (Initially Hidden) -->
         <div id="attendance-history-section" class="hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
             <div class="text-center mb-6">
                 <i class="fas fa-calendar-alt text-4xl text-blue-500 mb-4"></i>
@@ -189,7 +194,8 @@
             </div>
 
             <div class="mb-6 text-center">
-                <button id="todays-class-btn" class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+                <button id="todays-class-btn"
+                    class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
                     <i class="fas fa-calendar-day mr-2"></i>
                     Go to Today's Class
                 </button>
@@ -199,26 +205,28 @@
                 <table class="min-w-full divide-y divide-slate-200">
                     <thead class="bg-slate-50 sticky top-0">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Date</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Present</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Absent</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Present</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Absent</th>
                         </tr>
                     </thead>
                     <tbody id="history-log-body" class="bg-white divide-y divide-slate-200">
-                        <!-- JS will populate this -->
                     </tbody>
                 </table>
             </div>
 
-             <div class="mt-8 text-center">
-                <button id="home-btn" class="bg-slate-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+            <div class="mt-8 text-center">
+                <button id="home-btn"
+                    class="bg-slate-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
                     <i class="fas fa-chevron-left mr-2"></i>
                     Change Class
                 </button>
             </div>
         </div>
 
-        <!-- Step 5: Modify Attendance (Initially Hidden) -->
         <div id="modify-attendance-section" class="hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
             <div class="text-center mb-6">
                 <i class="fas fa-edit text-4xl text-blue-500 mb-4"></i>
@@ -227,7 +235,6 @@
                 <p id="modify-date" class="text-sm text-slate-500"></p>
             </div>
 
-             <!-- Student Lists for Modification -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold text-green-700 mb-4 border-b pb-2">Present</h3>
@@ -240,8 +247,11 @@
             </div>
 
             <div class="mt-8 text-center flex justify-center gap-4">
-                 <button id="cancel-modify-btn" class="bg-slate-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-600 transition">Cancel</button>
-                <button id="save-changes-btn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition">Save Changes</button>
+                <button id="cancel-modify-btn"
+                    class="bg-slate-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-600 transition">Cancel</button>
+                <button id="save-changes-btn"
+                    class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition">Save
+                    Changes</button>
             </div>
         </div>
     </main>
@@ -265,8 +275,7 @@
         const attendanceLogBody = document.getElementById('attendance-log-body');
         const noEntriesRow = document.getElementById('no-entries-row');
         const slotError = document.getElementById('slot-error');
-        const logoutBtn = document.getElementById('logout-btn');
-        
+
         // Summary elements
         const summaryClassInfo = document.getElementById('summary-class-info');
         const summaryDate = document.getElementById('summary-date');
@@ -275,7 +284,7 @@
         const presentStudentsList = document.getElementById('present-students-list');
         const absentStudentsList = document.getElementById('absent-students-list');
         const summaryButtons = document.getElementById('summary-buttons');
-        
+
         // History elements
         const historyClassInfo = document.getElementById('history-class-info');
         const historyLogBody = document.getElementById('history-log-body');
@@ -308,10 +317,10 @@
                 { id: 'S009', name: 'Ivy Lewis' }, { id: 'S010', name: 'Jack Robinson' },
                 { id: 'S011', name: 'Karen Walker' }, { id: 'S012', name: 'Leo Young' },
             ],
-             'PHY110 - Classical Mechanics (1:00 PM - 2:00 PM)': [
+            'PHY110 - Classical Mechanics (1:00 PM - 2:00 PM)': [
                 { id: 'S001', name: 'Alice Johnson' }, { id: 'S004', name: 'Diana Miller' },
                 { id: 'S008', name: 'Hannah Clark' }, { id: 'S011', name: 'Karen Walker' },
-             ],
+            ],
             'CHM321 - Organic Chemistry (2:30 PM - 3:30 PM)': [
                 { id: 'S002', name: 'Bob Williams' }, { id: 'S005', name: 'Ethan Davis' },
                 { id: 'S009', name: 'Ivy Lewis' }, { id: 'S012', name: 'Leo Young' },
@@ -319,18 +328,19 @@
         };
 
         // Mock historical attendance data - now stores IDs
+        // NOTE: Using realistic dates around the current date for accurate testing of the 1-week rule.
         const mockHistory = {
             'CS101 - Intro to Programming (9:00 AM - 10:00 AM)': [
-                { date: '2025-09-05', presentIds: ['S001', 'S002', 'S003', 'S004', 'S005', 'S007'], absentIds: ['S006', 'S008'] },
-                { date: '2025-09-03', presentIds: ['S001', 'S002', 'S003', 'S004', 'S005', 'S006', 'S007', 'S008'], absentIds: [] },
-                { date: '2025-09-01', presentIds: ['S001', 'S002', 'S003', 'S004', 'S006', 'S007', 'S008'], absentIds: ['S005'] },
+                { date: '2025-09-21', presentIds: ['S001', 'S002', 'S003', 'S004', 'S005', 'S007'], absentIds: ['S006', 'S008'] },
+                { date: '2025-09-19', presentIds: ['S001', 'S002', 'S003', 'S004', 'S005', 'S006', 'S007', 'S008'], absentIds: [] },
+                { date: '2025-09-12', presentIds: ['S001', 'S002', 'S003', 'S004', 'S006', 'S007', 'S008'], absentIds: ['S005'] }, // Older than 1 week
             ],
             'MA203 - Linear Algebra (10:30 AM - 11:30 AM)': [
-                 { date: '2025-09-04', presentIds: ['S009', 'S010', 'S011'], absentIds: ['S012'] },
-                 { date: '2025-09-02', presentIds: ['S009', 'S010', 'S011', 'S012'], absentIds: [] },
+                { date: '2025-09-20', presentIds: ['S009', 'S010', 'S011'], absentIds: ['S012'] },
+                { date: '2025-09-18', presentIds: ['S009', 'S010', 'S011', 'S012'], absentIds: [] },
             ],
         };
-        
+
         // --- Functions ---
 
         /**
@@ -339,8 +349,8 @@
         async function startCamera() {
             try {
                 cameraStatus.innerHTML = '<p>Requesting camera access...</p>';
-                videoStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: 'user' } 
+                videoStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user' }
                 });
                 cameraFeed.srcObject = videoStream;
                 cameraFeed.onloadedmetadata = () => {
@@ -352,7 +362,7 @@
                 cameraStatus.innerHTML = `<p class="text-red-400 p-4 text-center"><i class="fas fa-exclamation-triangle mr-2"></i>Could not access camera.<br>Please check permissions.</p>`;
             }
         }
-        
+
         /**
          * Stops the camera feed.
          */
@@ -372,7 +382,7 @@
          */
         function captureAttendance() {
             if (!videoStream) return;
-            
+
             const absentStudents = currentRoster.filter(student => !presentStudents.some(p => p.id === student.id));
 
             if (absentStudents.length === 0) {
@@ -397,7 +407,7 @@
                 const dataUrl = canvas.toDataURL('image/jpeg');
 
                 if (noEntriesRow) noEntriesRow.style.display = 'none';
-                
+
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
                     <td class="px-4 py-2"><img src="${dataUrl}" alt="Snapshot" class="log-thumbnail"></td>
@@ -419,7 +429,7 @@
         function showSummary() {
             stopCamera();
             attendanceTakingSection.classList.add('hidden');
-            
+
             const absentStudents = currentRoster.filter(student => !presentStudents.some(p => p.id === student.id));
             const presentStudentIds = presentStudents.map(s => s.id);
             const absentStudentIds = absentStudents.map(s => s.id);
@@ -427,24 +437,27 @@
             const todaysDate = new Date().toISOString().slice(0, 10);
             const selectedSlot = classSlotSelect.value;
             mockHistory[selectedSlot] = mockHistory[selectedSlot] || [];
-            
+
             const existingIndex = mockHistory[selectedSlot].findIndex(h => h.date === todaysDate);
-            if(existingIndex > -1) {
+            if (existingIndex > -1) {
                 mockHistory[selectedSlot].splice(existingIndex, 1);
             }
-            
+
             mockHistory[selectedSlot].unshift({
                 date: todaysDate,
                 presentIds: presentStudentIds,
                 absentIds: absentStudentIds
             });
-            
+            // Sort history by date after adding new record
+            mockHistory[selectedSlot].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+
             populateSummaryScreen(
                 new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
                 presentStudentIds,
                 absentStudentIds
             );
-            
+
             summaryButtons.innerHTML = `
                 <button id="view-history-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition">
                     <i class="fas fa-history mr-2"></i> View Attendance History
@@ -465,12 +478,12 @@
             const absentStudentsDetails = currentRoster.filter(s => absentIds.includes(s.id));
 
             summaryClassInfo.textContent = classSlotSelect.value;
-            
+
             let displayDate = dateStr;
             if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
                 const [year, month, day] = dateStr.split('-');
                 const dateObj = new Date(Date.UTC(year, parseInt(month) - 1, parseInt(day)));
-                 displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+                displayDate = dateObj.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
             }
             summaryDate.textContent = displayDate;
 
@@ -508,13 +521,13 @@
             const historyData = mockHistory[selectedSlot] || [];
 
             if (historyData.length > 0) {
-                 historyLogBody.innerHTML = historyData.map(record => `
+                historyLogBody.innerHTML = historyData.map(record => `
                     <tr class="cursor-pointer hover:bg-blue-50" data-date="${record.date}">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">${record.date}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">${record.presentIds.length}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-semibold">${record.absentIds.length}</td>
                     </tr>
-                 `).join('');
+                `).join('');
             } else {
                 historyLogBody.innerHTML = `<tr><td colspan="3" class="px-6 py-4 text-center text-slate-500">No history available for this class.</td></tr>`;
             }
@@ -529,15 +542,15 @@
          */
         function showTodaysSummary() {
             attendanceHistorySection.classList.add('hidden');
-            
+
             const allStudentIds = currentRoster.map(s => s.id);
-            
+
             populateSummaryScreen(
                 new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-                [], 
+                [],
                 allStudentIds
             );
-            
+
             summaryButtons.innerHTML = `
                 <button id="back-to-history-btn" class="bg-slate-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-600 transition">Back to History</button>
                 <button id="take-attendance-btn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition">
@@ -551,7 +564,7 @@
                 currentClassInfo.textContent = classSlotSelect.value;
                 startCamera();
             });
-            
+
             sessionSummarySection.classList.remove('hidden');
         }
 
@@ -567,14 +580,31 @@
             if (record) {
                 attendanceHistorySection.classList.add('hidden');
                 populateSummaryScreen(date, record.presentIds, record.absentIds);
-                
-                summaryButtons.innerHTML = `
-                    <button id="back-to-history-btn" class="bg-slate-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-600 transition">Back to History</button>
-                    <button id="modify-attendance-btn" data-date="${date}" class="bg-yellow-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-yellow-600 transition">Modify Attendance</button>
-                `;
+
+                const recordDate = new Date(date + 'T00:00:00'); // Use T00:00:00 to avoid timezone issues
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const oneWeekAgo = new Date(today);
+                oneWeekAgo.setDate(today.getDate() - 7);
+
+                const isModifiable = recordDate >= oneWeekAgo;
+
+                let buttonsHTML = `<button id="back-to-history-btn" class="bg-slate-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-600 transition">Back to History</button>`;
+
+                if (isModifiable) {
+                    buttonsHTML += `<button id="modify-attendance-btn" data-date="${date}" class="bg-yellow-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-yellow-600 transition">Modify Attendance</button>`;
+                } else {
+                    buttonsHTML += `<button disabled class="bg-yellow-200 text-yellow-600 font-bold py-3 px-8 rounded-lg cursor-not-allowed" title="Records can only be modified within one week.">Modification Period Ended</button>`;
+                }
+
+                summaryButtons.innerHTML = buttonsHTML;
+
                 document.getElementById('back-to-history-btn').addEventListener('click', showHistory);
-                document.getElementById('modify-attendance-btn').addEventListener('click', (e) => showModifyScreen(e.currentTarget.dataset.date));
-                
+                if (isModifiable) {
+                    document.getElementById('modify-attendance-btn').addEventListener('click', (e) => showModifyScreen(e.currentTarget.dataset.date));
+                }
+
                 sessionSummarySection.classList.remove('hidden');
             }
         }
@@ -618,7 +648,7 @@
             document.querySelectorAll('.move-to-absent-btn').forEach(btn => btn.addEventListener('click', (e) => moveStudent(e.target.dataset.id, 'toAbsent')));
             document.querySelectorAll('.move-to-present-btn').forEach(btn => btn.addEventListener('click', (e) => moveStudent(e.target.dataset.id, 'toPresent')));
         }
-        
+
         /**
          * Handles moving a student between lists in the modify UI.
          * @param {string} studentId 
@@ -649,16 +679,16 @@
             sessionSummarySection.classList.add('hidden');
             attendanceHistorySection.classList.add('hidden');
             modifyAttendanceSection.classList.add('hidden');
-            
+
             const noEntriesRow = document.getElementById('no-entries-row');
-            if(noEntriesRow) noEntriesRow.style.display = '';
+            if (noEntriesRow) noEntriesRow.style.display = '';
             attendanceLogBody.innerHTML = `
                 <tr id="no-entries-row">
                     <td colspan="4" class="px-4 py-6 text-center text-slate-500">No students marked present yet.</td>
                 </tr>
             `;
             classSlotSelect.value = '';
-            
+
             presentStudents = [];
             currentRoster = [];
             captureBtn.disabled = true;
@@ -681,25 +711,21 @@
         endSessionBtn.addEventListener('click', showSummary);
         captureBtn.addEventListener('click', captureAttendance);
         homeBtn.addEventListener('click', resetToSelection);
-        
+
         cancelModifyBtn.addEventListener('click', () => {
-             showHistoricalSummary(modifyingDate);
-             modifyAttendanceSection.classList.add('hidden');
+            // Simply go back to the historical summary view, discarding any temporary changes.
+            showHistoricalSummary(modifyingDate);
+            modifyAttendanceSection.classList.add('hidden');
         });
 
         saveChangesBtn.addEventListener('click', () => {
+            // The changes are already saved in the mockHistory object by the moveStudent function.
+            // We just need to show the updated summary.
             modifyAttendanceSection.classList.add('hidden');
             showHistoricalSummary(modifyingDate);
         });
 
-        logoutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            resetToSelection();
-        });
-        
     </script>
 </body>
+
 </html>
-
-
-
