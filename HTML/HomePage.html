@@ -40,9 +40,12 @@
 
     <div class="pt-36 pb-16 px-4 sm:px-8 max-w-6xl mx-auto">
 
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center mb-10">
-            Attendance with Face Recognition
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center mb-4">
+            <span style="font-size: 1.5em;">A</span>ttendify
         </h1>
+        <p class="text-xl text-center text-gray-600 mb-10 font-bold">
+            A secure and efficient facial recognition system for attendance management in universities.
+        </p>
 
         <div id="university-card"
             class="card max-w-2xl mx-auto bg-gradient-to-br from-blue-500 to-blue-600 text-white text-center">
@@ -68,7 +71,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-2">Student Portal</h3>
                         <p class="text-sm text-gray-600 mb-4">
-                            Access your attendance records, profile information, and upload recognition images.
+                            Access your attendance records and profile information.
                         </p>
                         <button
                             class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:scale-105 transition"
@@ -110,16 +113,16 @@
         }
         accessButton.addEventListener('click', togglePortals);
 
-        // This function now redirects to logicpage1.html
+        // This function now redirects to LoginPage.html
         function enterStudentPortal() {
             console.log("Entering Student Portal...");
-            window.location.href = 'loginpage1.html';
+            window.location.href = 'LoginPage.html';
         }
 
-        // This function now also redirects to logicpage1.html
+        // This function now also redirects to LoginPage.html
         function enterFacultyPortal() {
             console.log("Entering Faculty Portal...");
-            window.location.href = 'loginpage1.html';
+            window.location.href = 'LoginPage.html';
         }
 
         window.enterStudentPortal = enterStudentPortal;
