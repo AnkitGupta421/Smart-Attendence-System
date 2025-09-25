@@ -1,257 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title -->
-    <title>Attendify - Smart Face Recognition Attendance System</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attendify</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS File -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Inter Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-</head>
-
-<body class="antialiased">
-
-    <!-- Header Section -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo/Brand Name -->
-            <!-- Updated Brand Name -->
-            <a href="#" class="flex items-center space-x-2 text-xl font-bold text-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12a3 3 0 100-6 3 3 0 000 6z" />
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 15h2a3 3 0 003-3V6a3 3 0 00-3-3h-2a3 3 0 00-3 3v6a3 3 0 003 3z" />
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15 15h-2a3 3 0 00-3 3v6a3 3 0 003 3h2a3 3 0 003-3v-6a3 3 0 00-3-3z" />
-                </svg>
-                <span>Attendify</span>
-            </a>
-            <!-- Navigation Menu -->
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#features"
-                    class="text-gray-600 hover:text-orange-600 transition-colors duration-200">Features</a>
-                <a href="#dashboard"
-                    class="text-gray-600 hover:text-orange-600 transition-colors duration-200">Dashboard</a>
-                <!-- Removed Contact Us Link -->
-                <!-- Added Sign In Button -->
-                <a href="Selection.html" class="text-gray-600 hover:text-orange-600 transition-colors duration-200">Sign
-                    In</a>
-            </nav>
-            <!-- Removed Get Started Button -->
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="bg-gradient-to-r from-orange-500 to-indigo-600 text-white py-20 md:py-32">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight drop-shadow-md">
-                    Seamless Attendance with Smart Face Recognition
-                </h1>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
-                    A secure and efficient facial recognition system for attendance management in universities and
-                    corporates.
-                </p>
-                <a href="#dashboard"
-                    class="bg-white text-cyan-600 px-8 py-3 rounded-full text-lg font-bold hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-xl">
-                    Explore Dashboard
-                </a>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="py-16 bg-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold mb-12">Designed for Your Needs</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Feature Card 1 -->
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Efficient</h3>
-                        <p class="text-gray-600">
-                            The system is designed to quickly capture attendance, minimizing delays and improving
-                            efficiency.
-                        </p>
-                    </div>
-                    <!-- Feature Card 2 -->
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.01 12.01 0 003 12c0 2.21 1.006 4.207 2.658 5.408l-1.554 1.554a.75.75 0 00.53.22h13.912a.75.75 0 00.53-.22l-1.554-1.554A10.01 10.01 0 0021 12c0-2.613-1.023-5.003-2.678-6.994z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Accurate</h3>
-                        <p class="text-gray-600">
-                            Our AI technology provides a high level of accuracy for reliable attendance tracking and
-                            data.
-                        </p>
-                    </div>
-                    <!-- Feature Card 3 -->
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm6-12V6a2 2 0 012-2h2a2 2 0 012 2v6m-4 0v-6" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Integration</h3>
-                        <p class="text-gray-600">
-                            The system can be integrated with existing HR or student information platforms.
-                        </p>
-                    </div>
-                    <!-- New Feature Card 4 -->
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 17.25v-4.5h4.5v-2.25H9v-4.5" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 11.25a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Real-time Reports</h3>
-                        <p class="text-gray-600">
-                            Generate and view attendance reports instantly for up-to-date analysis and decision-making.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="py-16 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Powerful Dashboards for Everyone</h2>
-                <p class="text-center text-gray-600 max-w-xl mx-auto mb-10">
-                    Our tailored dashboards provide real-time insights and a clear overview, whether you're a university
-                    administrator or a corporate HR manager.
-                </p>
-
-                <!-- Dashboard Tabs -->
-                <div class="flex justify-center mb-8">
-                    <button id="tab-university"
-                        class="tab-button bg-indigo-600 text-white px-6 py-2 rounded-l-xl focus:outline-none transition-colors duration-200">
-                        For Universities
-                    </button>
-                    <button id="tab-corporate"
-                        class="tab-button bg-gray-300 text-gray-800 px-6 py-2 rounded-r-xl focus:outline-none transition-colors duration-200">
-                        For Corporates
-                    </button>
-                </div>
-
-                <!-- Dashboard Content - University -->
-                <div id="content-university" class="tab-content bg-white p-8 rounded-xl shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center text-indigo-700">University Dashboard</h3>
-                    <!-- Updated Dashboard Content -->
-                    <div class="flex flex-col items-center justify-center space-y-4 py-8">
-                        <h4 class="text-xl font-semibold text-indigo-800 mb-2">Summary</h4>
-                        <p class="text-center text-gray-600 max-w-2xl leading-relaxed">
-                            Dive deep into comprehensive attendance records for all students and classes. Our summary
-                            provides detailed insights into attendance rates, late arrivals, and absences across
-                            different departments and courses. You can easily generate reports, track attendance trends
-                            over time, and identify patterns to improve student engagement and academic performance.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Dashboard Content - Corporate -->
-                <div id="content-corporate" class="tab-content bg-white p-8 rounded-xl shadow-xl hidden">
-                    <h3 class="text-2xl font-bold mb-4 text-center text-indigo-700">Corporate Dashboard</h3>
-                    <!-- Updated Dashboard Content -->
-                    <div class="flex flex-col items-center justify-center space-y-4 py-8">
-                        <h4 class="text-xl font-semibold text-indigo-800 mb-2">Summary</h4>
-                        <p class="text-center text-gray-600 max-w-2xl leading-relaxed">
-                            Gain a clear and concise summary of employee attendance. Our dashboard provides real-time
-                            data on employee check-ins, check-outs, and overall presence. You can monitor team
-                            attendance, track working hours, and generate payroll-ready reports. This feature helps HR
-                            managers and team leads make data-driven decisions to optimize workforce management.
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 bg-white text-center">
-            <div class="container mx-auto px-4">
-                <!-- Updated text and button for contact section -->
-                <p class="text-gray-600 max-w-xl mx-auto mb-8">
-                    Sign in to see how Attendify can transform your attendance management.
-                </p>
-                <a href="Selection.html"
-                    class="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-indigo-700 transition-colors duration-200 shadow-xl">
-                    Sign in
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-gray-300 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Attendify. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Dashboard Tabs -->
-    <script>
-        // Get all tab buttons and tab contents
-        const universityTab = document.getElementById('tab-university');
-        const corporateTab = document.getElementById('tab-corporate');
-        const universityContent = document.getElementById('content-university');
-        const corporateContent = document.getElementById('content-corporate');
-
-        /**
-         * Function to show a specific tab and hide others.
-         * @param {HTMLElement} contentToShow - The content block to display.
-         * @param {HTMLElement} buttonToActivate - The button to style as active.
-         * @param {HTMLElement} buttonToDeactivate - The button to style as inactive.
-         */
-        function showTab(contentToShow, buttonToActivate, buttonToDeactivate) {
-            // Hide all content blocks
-            universityContent.classList.add('hidden');
-            corporateContent.classList.add('hidden');
-
-            // Show the selected content block
-            contentToShow.classList.remove('hidden');
-
-            // Update button styles to reflect the active tab
-            buttonToActivate.classList.add('bg-indigo-600', 'text-white');
-            buttonToActivate.classList.remove('bg-gray-300', 'text-gray-800');
-
-            buttonToDeactivate.classList.add('bg-gray-300', 'text-gray-800');
-            buttonToDeactivate.classList.remove('bg-indigo-600', 'text-white');
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #eef2f8;
+            color: #334155;
         }
 
-        // Add click event listeners to the tab buttons
-        universityTab.addEventListener('click', () => {
-            showTab(universityContent, universityTab, corporateTab);
-        });
+        .card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-        corporateTab.addEventListener('click', () => {
-            showTab(corporateContent, corporateTab, universityTab);
-        });
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 overflow-auto">
+    <div class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-6 bg-white text-gray-800 shadow-md">
+        <div class="flex items-center space-x-3">
+            <i class="fas fa-user-check text-2xl text-indigo-600"></i>
+            <h2 class="text-3xl font-bold text-gray-800">Attendify</h2>
+        </div>
+    </div>
+
+    <div class="pt-36 pb-16 px-4 sm:px-8 max-w-6xl mx-auto">
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center mb-10">
+            Attendance with Face Recognition
+        </h1>
+
+        <div id="university-card"
+            class="card max-w-2xl mx-auto bg-gradient-to-br from-blue-500 to-blue-600 text-white text-center">
+            <div class="flex flex-col items-center">
+                <i class="fas fa-user-check text-6xl text-white mb-4"></i>
+                <h2 class="text-3xl font-bold mb-2">University Portal</h2>
+                <p class="text-sm mb-6 max-w-md opacity-90">
+                    Welcome to the University Portal. Click the button below to access the student and faculty portals.
+                </p>
+                <button id="access-portal-btn"
+                    class="bg-white text-blue-600 font-semibold py-3 px-6 rounded-full shadow-md hover:shadow-xl transition transform hover:scale-105">
+                    Access University Portal &rarr;
+                </button>
+            </div>
+        </div>
+
+        <div id="portals-container" class="w-full mt-10 hidden">
+            <div class="w-full md:flex gap-6">
+                <div class="card flex-1 hover:bg-gray-50 transition mb-6 md:mb-0">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-indigo-600 p-4 rounded-lg flex items-center justify-center h-20 w-20 mb-4">
+                            <i class="fas fa-user-graduate text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Student Portal</h3>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Access your attendance records, profile information, and upload recognition images.
+                        </p>
+                        <button
+                            class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:scale-105 transition"
+                            onclick="enterStudentPortal()">
+                            Enter Student Portal &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card flex-1 hover:bg-gray-50 transition">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-indigo-600 p-4 rounded-lg flex items-center justify-center h-20 w-20 mb-4">
+                            <i class="fas fa-chalkboard-teacher text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Faculty Portal</h3>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Manage student attendance using facial recognition and access attendance history.
+                        </p>
+                        <button
+                            class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:scale-105 transition"
+                            onclick="enterFacultyPortal()">
+                            Enter Faculty Portal &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const accessButton = document.getElementById('access-portal-btn');
+        const portalsContainer = document.getElementById('portals-container');
+
+        function togglePortals() {
+            portalsContainer.classList.toggle('hidden');
+            if (!portalsContainer.classList.contains('hidden')) {
+                portalsContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        accessButton.addEventListener('click', togglePortals);
+
+        // This function now redirects to logicpage1.html
+        function enterStudentPortal() {
+            console.log("Entering Student Portal...");
+            window.location.href = 'loginpage1.html';
+        }
+
+        // This function now also redirects to logicpage1.html
+        function enterFacultyPortal() {
+            console.log("Entering Faculty Portal...");
+            window.location.href = 'loginpage1.html';
+        }
+
+        window.enterStudentPortal = enterStudentPortal;
+        window.enterFacultyPortal = enterFacultyPortal;
     </script>
 </body>
 
